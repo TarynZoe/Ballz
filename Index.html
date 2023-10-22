@@ -9,15 +9,38 @@
     <style> 
         .basketball {
             width: 200px;
+            animation: spin 2s infinite linear;
+        }
+        .wrapper {
+          animation: move 5s infinite linear;
         }
         body {
             background-image: url('Baller floor.jpg');
             background-size: cover;
         }
+        @keyframes spin{
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes move{
+          0% {
+            transform: translateX(-200px);
+          }
+          100% {
+            transform: translateX(100vw);
+          }
+        }
+
     </style>
   </head>
   <body>
-	<img src="Basketball.png" class="basketball">
+    <div class="wrapper">
+      <img src="Basketball.png" class="basketball">
+    </div>
   </body>
 </html>
 
