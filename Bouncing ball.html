@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Taryn's Ballz</title>
+    <style> 
+        .basketball {
+          width: 200px;
+          height: 200px;
+          transition: all 0.5s;
+        }
+        .wrapper:hover .basketball {
+          animation: bounce 1s infinite
+        }
+        .wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh
+        }
+        body {
+          background-image: url('Baller floor.jpg');
+          background-size: cover;
+        }
+        @keyframes bounce{
+          0% {
+            transform: translateX(0px);
+          }
+          50% {
+            transform: translateY(20vh);
+            height: 190px;
+          }
+          100% {
+            transform: translateY(0vh);
+          }
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="Basketball.png" class="basketball">
+    </div>
+  </body>
+</html>
+
+
