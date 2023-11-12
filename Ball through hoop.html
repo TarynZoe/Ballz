@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Taryn's Ballz</title>
+    <style> 
+        .basketball {
+          width: 125px;
+        }
+        .wrapper:hover .basketball {
+          animation: spin 2s infinite linear;
+        }
+        .wrapper:hover .scrotum {
+          animation: move 2s infinite linear;
+        }
+        .hoop {
+          width: 400px; 
+          align-content: center;       
+        }
+        .wrapper {
+          align-items: center; 
+          justify-content: space-between;
+          display: flex;
+          height: 100vh;
+          flex-direction: column;
+          padding: 100px;
+          box-sizing: border-box;
+        }
+        body {
+          background-image: url('Baller floor.jpg');
+          background-size: cover;
+        }
+        @keyframes spin{
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes move{
+          0% {
+            transform: translateY(0px);
+          }
+          100% {
+            transform: translateY(-110vw);
+          }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="Hoop.png" class="hoop">
+      <div class="scrotum">
+        <img src="Basketball.png" class="basketball">
+      </div>
+    </div>
+  </body>
+
+</html>
+
+
