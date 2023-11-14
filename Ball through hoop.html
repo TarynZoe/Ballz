@@ -8,7 +8,12 @@
     <title>Taryn's Ballz</title>
     <style> 
         .basketball {
+          width: 100%
+        }
+        .scrotum {
           width: 125px;
+          position:relative;
+          z-index: 2;
         }
         .wrapper:hover .basketball {
           animation: spin 2s infinite linear;
@@ -19,6 +24,16 @@
         .hoop {
           width: 400px; 
           align-content: center;       
+        }
+        .front-of-hoop {
+          position:absolute;
+          width: 208px;
+          top: 161px;
+          left: 97px;
+          z-index: 1;
+        }
+        .hoop-wrapper {
+          position:relative;
         }
         .wrapper {
           align-items: center; 
@@ -44,16 +59,31 @@
         @keyframes move{
           0% {
             transform: translateY(0px);
+            width: 125px;
+            z-index: 3;
           }
-          100% {
-            transform: translateY(-110vw);
+          50% {
+            transform: translateY(-70vh);
+            width: 100px;
+            z-index: 1;
+          }
+          60% {
+            z-index: 0;
+          }
+          100%{
+            transform: translateY(-25vh);
+            width: 100px;
+            z-index: 0;
           }
         }
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <img src="Hoop.png" class="hoop">
+      <div class="hoop-wrapper">
+        <img src="Hoop.png" class="hoop">
+        <img src="Front of Hoop.png" class="front-of-hoop">
+      </div>
       <div class="scrotum">
         <img src="Basketball.png" class="basketball">
       </div>
