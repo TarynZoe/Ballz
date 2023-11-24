@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
-      let rotation = 0
+      let rotation = 0;
+      let translate = 0;
       function rollBall() {
         rotation = rotation + 5;
+        translate = (translate + 10) %2048;
         document.getElementById("basketball").style = `transform: rotate(${rotation}deg)`;
+        document.getElementById("wrapper").style = `transform: translateX(${translate}px)`;
       }
       function handleClick() {
         setInterval(rollBall, 20)
@@ -31,7 +34,7 @@
     </style>
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
       <img src="Basketball.png" class="basketball" id="basketball" onclick="handleClick()">
       
     </div>
