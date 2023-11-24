@@ -6,9 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
+      let rotation = 0
       function rollBall() {
-        document.getElementById("basketball").outerHTML = "popped"
+        rotation = rotation + 5;
+        document.getElementById("basketball").style = `transform: rotate(${rotation}deg)`;
       }
+      function handleClick() {
+        setInterval(rollBall, 20)
+      }
+
     </script>
     <title>Taryn's Ballz</title>
     <style> 
@@ -26,7 +32,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <img src="Basketball.png" class="basketball" id="basketball" onclick="rollBall()">
+      <img src="Basketball.png" class="basketball" id="basketball" onclick="handleClick()">
       
     </div>
   </body>
