@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+      function rollBall() {
+        document.getElementById("basketball").outerHTML = "popped"
+      }
+    </script>
+    <title>Taryn's Ballz</title>
+    <style> 
+        .basketball {
+            width: 200px;
+        }
+        .wrapper {
+        }
+        body {
+            background-image: url('Baller floor.jpg');
+            background-size: cover;
+        }
+      
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="Basketball.png" class="basketball" id="basketball" onclick="rollBall()">
+      
+    </div>
+  </body>
+</html>
+
+
