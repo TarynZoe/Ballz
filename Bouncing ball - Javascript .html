@@ -1,40 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script>
-      function handleClick () {
-        const pageHeight = window.innerHeight;
-        const ballHeight = document.getElementById ("basketball").offsetHeight;
-        //alert (`Page Height: ${pageHeight} \nBall Height: ${ballHeight}`);
-        const translate = pageHeight - ballHeight
-        document.getElementById("wrapper").style = `transform: translateY(${translate}px)`
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script>
+    const ball = {
+      position: 0,
+      speed: 0,
+    };
+    function startBouncing() {
+      /*const pageHeight = window.innerHeight;
+      const ballHeight = document.getElementById("basketball").offsetHeight;
+      //alert (`Page Height: ${pageHeight} \nBall Height: ${ballHeight}`);
+      const translate = pageHeight - ballHeight;
+      document.getElementById("wrapper").style = "transform: translateY(" + translate + "px)";*/
+      ball.interval = setInterval(bounce, 20);
+    }
+    function bounce() {
+      const pageHeight = window.innerHeight;
+      const ballHeight = document.getElementById("basketball").offsetHeight;
+      const groundHeight = pageHeight - ballHeight;
+
+      ball.speed = ball.speed + 1;
+      ball.position = ball.position + ball.speed;
+
+      if (ball.position > groundHeight) {
+        stopBouncing()
       }
-    </script>
-    <title>Taryn's Ballz</title>
-    <style> 
-        .basketball {
-          width: 200px;
-        }
-        .wrapper {
-          transition: all 1s linear;
-          transform: translateY("0px");
-        }
-        body {
-          background-image: url('Baller floor.jpg');
-          background-size: cover;
-        }
-    </style>
-  </head>
-  <body>
-    <div class="wrapper" id="wrapper">
-      <img src="Basketball.png" class="basketball" id="basketball" onclick="handleClick()">
-      
-    </div>
-  </body>
+      else {
+        document.getElementById("wrapper").style = "transform: translateY(" + ball.position + "px)";
+      }
+    }
+    function stopBouncing () {
+      clearInterval(ball.interval)
+    }
+  </script>
+  <title>Taryn's Ballz</title>
+  <style>
+    .basketball {
+      width: 200px;
+    }
+
+    .wrapper {
+      //transition: all 1s linear;
+      transform: translateY(0px);
+    }
+
+    body {
+      background-image: url('Baller floor.jpg');
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper" id="wrapper">
+    <img src="Basketball.png" class="basketball" id="basketball" onclick="startBouncing()">
+
+  </div>
+</body>
+
 </html>
-
-

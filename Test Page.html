@@ -2,23 +2,26 @@
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <title id="intro">Test page</title>
+    <meta charset='UTF-8' />
+    <title id='intro'>Test page</title>
     <h1>Test Page</h1>
     <style>
         canvas#court {
             border: 1px solid black;
             width: 900px;
         }
+
         body {
-           
             background-image: url('NBA Logo.png');
-            background-size: 150px;
-            background-position: center ;
+            background-size: 300px;
+            background-position: center;
             background-repeat: repeat;
         }
-        .intro {
-            color: blueviolet;
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -26,22 +29,27 @@
 <body>
     <h2>This is a test page to make things</h2>
     <p>I have no idea wtf I'm doing so hopefully this will help</p>
-    <button onclick="getElementById('test').innerHTML=Date()">Click me</button> <p id="test"></p>
-        <canvas id="court" width="150" height="100"></canvas>
-        <script>
-            var canvas = document.getElementById('court'),
-                context = canvas.getContext('2d');
+    <div id="wrapper">
+        <img id='bBall' src='Basketball.png' width='150px' height='150px'>
+    </div>
+    <button onclick="getElementById('test').innerHTML=Date()">Click me</button>
+    <p id='test'></p>
+    <canvas id='court' width='150' height='100'></canvas>
+    <script>
+        const canvas = document.getElementById('court');
+        const ctx = canvas.getContext('2d');
 
-            make_base();
+        make_base();
 
-            function make_base() {
-                base_image = new Image();
-                base_image.src = 'Baller Floor.jpg';
-                base_image.onload = function () {
-                    context.drawImage(base_image, 0, 0);
-                }
+        function make_base() {
+            base_image = new Image();
+            base_image.src = 'Baller Floor.jpg';
+            base_image.onload = function () {
+                ctx.drawImage(base_image, 0, 0);
             }
-        </script>
+        }
+        
+    </script>
 </body>
 
 </html>
