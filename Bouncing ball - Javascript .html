@@ -10,41 +10,22 @@
       position: 0,
       speed: 0,
     };
-    /*function startBouncing() {
-      ball.interval = setInterval(bounce, 20);
-    }
     function bounce() {
-      const pageHeight = window.innerHeight;
-      const ballHeight = document.getElementById("basketball").offsetHeight;
-      const groundHeight = pageHeight - ballHeight;
-
-      ball.speed = ball.speed + 3;
-      ball.position = ball.position + ball.speed;
-
-      if (ball.position > groundHeight) {
-        ball.position = groundHeight;
-        stopBouncing()
-      }
-
-      document.getElementById("wrapper").style = "transform: translateY(" + (ball.position * -1) + "px)";
-    }
-    function stopBouncing() {
-      clearInterval(ball.interval)
-    }*/
-    function bounce() {
-      ball.position += 200
+      ball.speed -= 20
     }
     function render() {
       document.getElementById("wrapper").style = 'bottom:' + ball.position + 'px'
     }
-    function fall() {
-      ball.position -= 10
+    function move() {
+      ball.speed += 2;
+      ball.position -= ball.speed;
       if (ball.position < 0) {
         ball.position = 0
+        ball.speed = (ball.speed * -1) * 0.8
       }
     }
     ball.interval = setInterval(function () {
-      fall();
+      move();
       render()
     }, 20);
   </script>
