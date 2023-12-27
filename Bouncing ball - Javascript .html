@@ -6,24 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script>
+    //Object for the storing the ball state
     const ball = {
       position: 0,
       speed: 0,
     };
+    //the ball speed controls the rate at which the balls goes toward the ground
+    // so by setting a negative speed it goes up
     function bounce() {
       ball.speed -= 20
     }
+    // this function updates the css to change the ball position
     function render() {
       document.getElementById("wrapper").style = 'bottom:' + ball.position + 'px'
     }
+    // function that calculates where the ball should be
     function move() {
       ball.speed += 2;
       ball.position -= ball.speed;
+      // this is what happens when it hits the ground
       if (ball.position < 0) {
         ball.position = 0
         ball.speed = (ball.speed * -1) * 0.8
       }
     }
+    // calls move to perform calculations and render to move everything every 20ms
     ball.interval = setInterval(function () {
       move();
       render()
@@ -33,12 +40,14 @@
   <style>
     .basketball {
       width: 200px;
+      user-select: none;
     }
 
     .wrapper {
       //transition: all 0.1s linear;
       position: absolute;
-      bottom: 0
+      bottom: 0;
+      user-select: none;
     }
 
     body {
@@ -50,7 +59,7 @@
 
 <body>
   <div class="wrapper" id="wrapper">
-    <img src="Basketball.png" class="basketball" id="basketball" onclick="bounce()">
+    <img src="Basketball.png" class="basketball" id="basketball" onclick="bounce()" draggable="false">
 
   </div>
 </body>
