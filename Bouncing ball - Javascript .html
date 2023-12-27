@@ -13,8 +13,11 @@
     };
     //the ball speed controls the rate at which the balls goes toward the ground
     // so by setting a negative speed it goes up
-    function bounce() {
-      ball.speed -= 20
+    function bounceUp() {
+      ball.speed += 40
+    }
+    function bounceDown() {
+      ball.speed -= 40
     }
     // this function updates the css to change the ball position
     function render() {
@@ -54,13 +57,32 @@
       background-image: url('Baller floor.jpg');
       background-size: cover;
     }
+    .ball {
+      position: relative;
+    }
+    .top, .bottom {
+      position: absolute;
+      //background-color: aquamarine;
+      height: 40%;
+      width: 100%;
+    }
+    .top {
+      top: 0;
+    }
+    .bottom {
+      bottom: 0;
+    }
+    
   </style>
 </head>
 
 <body>
   <div class="wrapper" id="wrapper">
-    <img src="Basketball.png" class="basketball" id="basketball" onclick="bounce()" draggable="false">
-
+    <div class="ball">
+      <img src="Basketball.png" class="basketball" id="basketball"  draggable="false">
+      <div class="top" onclick="bounceUp()"></div>
+      <div class="bottom" onclick="bounceDown()"></div>
+    </div>
   </div>
 </body>
 
