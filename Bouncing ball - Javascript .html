@@ -6,37 +6,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script>
-    //Object for the storing the ball state
+    //Object for the storing the ball state on both axis
     const ball = {
-      position: 0,
-      speed: 0,
+      position: {
+        x: 0,
+        y: 0,
+      },
+      speed: {
+        x: 0,
+        y: 0,
+      },
+      rotation: 0,
     };
     //the ball speed controls the rate at which the balls goes toward the ground
-    // so by setting a negative speed it goes up
+    // so by setting a negative speed it goes up/to the side
     function bounceUp() {
-      ball.speed += 40
+      ball.speed.y += 40
     }
     function bounceDown() {
-      ball.speed -= 40
+      ball.speed.y -= 40
+    }
+    function bounceLeft() {
+      ball.speed.x += 40
+    }
+    function bounceRight() {
+      ball.speed.x -= 40
     }
     // this function updates the css to change the ball position
     function render() {
-      document.getElementById("wrapper").style = 'bottom:' + ball.position + 'px'
+      document.getElementById("wrapper").style = 'bottom:' + ball.position.y + 'px; left:' + ball.position.x + 'px';
+      document.getElementById("basketball").style = `transform: rotate(${ball.rotation}deg)`;
+    }
+    function rotate() {
+      ball.rotation += ball.speed.x
     }
     // function that calculates where the ball should be
     function move() {
-      ball.speed += 2;
-      ball.position -= ball.speed;
+      ball.speed.y += 2;
+      if (ball.speed.x < -2) {
+        ball.speed.x += .75;
+      }
+      else if (ball.speed.x > 2) {
+        ball.speed.x -= .75;
+      }
+      else {
+        ball.speed.x = 0;
+      }
+
+      ball.position.y -= ball.speed.y;
+      ball.position.x += ball.speed.x;
       // this is what happens when it hits the ground
-      if (ball.position < 0) {
-        ball.position = 0
-        ball.speed = (ball.speed * -1) * 0.8
+      if (ball.position.y < 0) {
+        ball.position.y = 0
+        ball.speed.y = (ball.speed.y * -1) * 0.8
+      }
+      // this is what happens when it hits the left wall
+      if (ball.position.x < 0) {
+        ball.position.x = 0
+        ball.speed.x = (ball.speed.x * -1)
+      }
+      // this is what happens when it hits the right wall
+      const ballWidth = document.getElementById("basketball").offsetWidth;
+
+      if (ball.position.x > window.innerWidth - ballWidth) {
+        ball.position.x = window.innerWidth - ballWidth
+        ball.speed.x = (ball.speed.x * -1)
       }
     }
     // calls move to perform calculations and render to move everything every 20ms
     ball.interval = setInterval(function () {
       move();
-      render()
+      rotate();
+      render();
     }, 20);
   </script>
   <title>Taryn's Ballz</title>
@@ -57,31 +98,54 @@
       background-image: url('Baller floor.jpg');
       background-size: cover;
     }
+
     .ball {
       position: relative;
     }
-    .top, .bottom {
+
+    .top,
+    .bottom {
       position: absolute;
       //background-color: aquamarine;
-      height: 40%;
+      height: 50%;
       width: 100%;
     }
+
     .top {
       top: 0;
     }
+
     .bottom {
       bottom: 0;
     }
-    
+
+    .left,
+    .right {
+      position: absolute;
+      //background-color: rgb(84, 173, 29);
+      height: 100%;
+      width: 20%;
+      top: 0;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrapper" id="wrapper">
     <div class="ball">
-      <img src="Basketball.png" class="basketball" id="basketball"  draggable="false">
+      <img src="Basketball.png" class="basketball" id="basketball">
       <div class="top" onclick="bounceUp()"></div>
       <div class="bottom" onclick="bounceDown()"></div>
+      <div class="left" onclick="bounceLeft()"></div>
+      <div class="right" onclick="bounceRight()"></div>
     </div>
   </div>
 </body>
