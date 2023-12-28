@@ -43,11 +43,11 @@
     // function that calculates where the ball should be
     function move() {
       ball.speed.y += 2;
-      if (ball.speed.x < -2) {
-        ball.speed.x += .75;
+      if (ball.speed.x < -1) {
+        ball.speed.x += .25;
       }
-      else if (ball.speed.x > 2) {
-        ball.speed.x -= .75;
+      else if (ball.speed.x > 1) {
+        ball.speed.x -= .25;
       }
       else {
         ball.speed.x = 0;
@@ -97,6 +97,7 @@
     body {
       background-image: url('Baller floor.jpg');
       background-size: cover;
+      overflow: hidden;
     }
 
     .ball {
@@ -124,7 +125,7 @@
       position: absolute;
       //background-color: rgb(84, 173, 29);
       height: 100%;
-      width: 20%;
+      width: 25%;
       top: 0;
     }
 
@@ -141,11 +142,11 @@
 <body>
   <div class="wrapper" id="wrapper">
     <div class="ball">
-      <img src="Basketball.png" class="basketball" id="basketball">
-      <div class="top" onclick="bounceUp()"></div>
-      <div class="bottom" onclick="bounceDown()"></div>
-      <div class="left" onclick="bounceLeft()"></div>
-      <div class="right" onclick="bounceRight()"></div>
+      <img src="Basketball.png" class="basketball" id="basketball" draggable="false">
+      <div class="top" onmousedown="bounceUp()"></div>
+      <div class="bottom" onmousedown="bounceDown()"></div>
+      <div class="left" onmousedown="bounceLeft()"></div>
+      <div class="right" onmousedown="bounceRight()"></div>
     </div>
   </div>
 </body>
