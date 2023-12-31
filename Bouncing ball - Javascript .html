@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=.5, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script>
     //Object for the storing the ball state on both axis
@@ -71,6 +71,11 @@
       if (ball.position.x > window.innerWidth - ballWidth) {
         ball.position.x = window.innerWidth - ballWidth
         ball.speed.x = (ball.speed.x * -1)
+      }
+      
+      if (ball.position.y > window.innerHeight - ballWidth) {
+        ball.position.y = window.innerHeight - ballWidth
+        ball.speed.y = (ball.speed.y * -1)
       }
     }
     // calls move to perform calculations and render to move everything every 20ms
