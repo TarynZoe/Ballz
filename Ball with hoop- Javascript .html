@@ -97,17 +97,26 @@
       position: absolute;
       user-select: none;
       left: 100px;
+      cursor:url(hand.png), pointer;
     }
 
     body {
       background-image: url('Baller floor.jpg');
       background-size: cover;
       overflow: hidden;
-      cursor: url('/users/taryn/Projectz/Ballz/hand.png');
     }
 
     .ball {
       position: relative;
+    }
+
+    .court {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      cursor:url(hand.png), pointer;
     }
 
     .top,
@@ -146,6 +155,7 @@
 </head>
 
 <body>
+  <div class ="court"></div>
   <div class="wrapper" id="wrapper">
     <div class="ball">
       <img src="Basketball.png" class="basketball" id="basketball" draggable="false">
